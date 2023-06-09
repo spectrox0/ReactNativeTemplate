@@ -7,33 +7,29 @@ import React, {
 } from 'react';
 import {FCC} from '../types/common';
 import {setStorage} from '../utils/storage';
-import {getInitialTheme} from '../utils/theme';
-import {Dimensions} from 'react-native';
+import {Theme, getInitialTheme, getTheme} from '../utils/theme';
+import {ColorSchemeName, Dimensions} from 'react-native';
 
 interface ThemeContextSchema {
   setTheme: () => void;
-  theme: boolean;
+  theme: Theme;
   size: [number | undefined, number | undefined];
 }
 export const ThemeContext = createContext<ThemeContextSchema>(
   {} as ThemeContextSchema,
 );
-type Props = {
-  theme?: string;
-};
-export const CustomThemeProvider: FCC<Props> = ({
-  children,
-  theme: initialTheme = getInitialTheme(),
-}) => {
-  const [isDark, setIsDark] = useState<string>(initialTheme);
+type Props = {};
+export const CustomThemeProvider: FCC<Props> = ({children}) => {
+  const [colorScheme, setColorScheme] = useState<ColorSchemeName>();
 
-  const theme = useMemo<Theme>(() => getTheme(isDark), [isDark]);
+  const theme = useMemo<Theme>(() => getTheme(colorScheme), [colorScheme]);
 
   const [size, setSize] = useState<[number | undefined, number | undefined]>([
     Dimensions.get('window').width,
     Dimensions.get('window').height,
   ]);
   useEffect(() => {
+    getInitialTheme().then(setColorScheme);
     const subscription = Dimensions.addEventListener('change', ({window}) => {
       setSize([window.width, window.height]);
     });
@@ -41,15 +37,16 @@ export const CustomThemeProvider: FCC<Props> = ({
   }, []);
 
   const setTheme = useCallback(() => {
-    setIsDark(prevState => {
-      setStorage('theme', theme === 'dark' ? 'light' : 'dark');
-      return !prevState;
+    setColorScheme(prevState => {
+      const newValue = prevState === 'dark' ? 'light' : 'dark';
+      setStorage('theme', newValue);
+      return newValue;
     });
-  }, [theme]);
+  }, [setColorScheme]);
 
   const value = useMemo<ThemeContextSchema>(
-    () => ({theme: isDark, setTheme, size}),
-    [theme, size],
+    () => ({theme, setTheme, size}),
+    [size, theme, setTheme],
   );
 
   return (
