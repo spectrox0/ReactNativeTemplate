@@ -24,5 +24,18 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "skipLibCheck": false,
+    "baseUrl": "./src",
+    "paths": {
+      "@atoms": ["components/atoms"],
+      "@atoms/*": ["components/atoms/*"],
+      "@molecules": ["components/molecules"],
+      "@molecules/*": ["components/molecules/*"],
+      "@organisms": ["components/organisms"],
+      "@organisms/*": ["components/organisms/*"],
+      "@templates": ["components/templates"],
+      "@templates/*": ["components/templates/*"],
+      "@actions/*": ["store/actions/*"],
+      "@actions": ["store/actions"]
+    }
   }
 }

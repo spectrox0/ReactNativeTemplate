@@ -7,8 +7,15 @@ import React, {
 } from 'react';
 import {FCC} from '../types/common';
 import {setStorage} from '../utils/storage';
-import {Theme, getInitialTheme, getTheme} from '../utils/theme';
-import {ColorSchemeName, Dimensions} from 'react-native';
+import {
+  Theme,
+  getInitialTheme,
+  getTheme,
+  initialColorScheme,
+} from '../utils/theme';
+import * as eva from '@eva-design/eva';
+import {ApplicationProvider} from '@ui-kitten/components';
+import {Dimensions} from 'react-native';
 
 interface ThemeContextSchema {
   setTheme: () => void;
@@ -20,7 +27,8 @@ export const ThemeContext = createContext<ThemeContextSchema>(
 );
 type Props = {};
 export const CustomThemeProvider: FCC<Props> = ({children}) => {
-  const [colorScheme, setColorScheme] = useState<ColorSchemeName>();
+  const [colorScheme, setColorScheme] =
+    useState<typeof initialColorScheme>(initialColorScheme);
 
   const theme = useMemo<Theme>(() => getTheme(colorScheme), [colorScheme]);
 
@@ -50,6 +58,8 @@ export const CustomThemeProvider: FCC<Props> = ({children}) => {
   );
 
   return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    <ApplicationProvider theme={theme} {...eva} {...value.theme}>
+      <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    </ApplicationProvider>
   );
 };
