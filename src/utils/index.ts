@@ -8,3 +8,4 @@ export type {
   lightTheme,
 } from './theme';
 export {client} from './client';
+export {AppError} from './error';

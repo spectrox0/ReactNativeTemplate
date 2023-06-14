@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 import {FCC} from '../types/common';
-import {setStorage, setThemeInStorage} from '../utils/storage';
+import {setThemeInStorage} from '../utils/storage';
 import {
   Theme,
   getInitialTheme,
