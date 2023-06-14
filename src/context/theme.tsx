@@ -6,7 +6,7 @@ import React, {
   useState,
 } from 'react';
 import {FCC} from '../types/common';
-import {setStorage} from '../utils/storage';
+import {setStorage, setThemeInStorage} from '../utils/storage';
 import {
   Theme,
   getInitialTheme,
@@ -47,7 +47,7 @@ export const CustomThemeProvider: FCC<Props> = ({children}) => {
   const setTheme = useCallback(() => {
     setColorScheme(prevState => {
       const newValue = prevState === 'dark' ? 'light' : 'dark';
-      setStorage('theme', newValue);
+      setThemeInStorage(newValue);
       return newValue;
     });
   }, [setColorScheme]);

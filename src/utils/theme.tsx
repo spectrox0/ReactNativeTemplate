@@ -43,11 +43,10 @@ export const getTheme = (theme = initialColorScheme) => {
 };
 
 export const getInitialTheme = async () => {
-  return getStorage('theme').then(theme => {
-    if (theme) {
-      return theme as typeof initialColorScheme;
-    } else {
-      return initialColorScheme;
-    }
-  });
+  const theme = getStorage('theme');
+  if (theme) {
+    return theme as typeof initialColorScheme;
+  } else {
+    return initialColorScheme;
+  }
 };
