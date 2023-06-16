@@ -11,7 +11,7 @@ import {
 } from '@env';
 import {z} from 'zod';
 
-const objectConfig = {
+export const Config = z.object({
   apiBaseUrl: z.string().default(''),
   apiKeyStripe: z.string().default(''),
   apiKeyFirebase: z.string().default(''),
@@ -20,8 +20,7 @@ const objectConfig = {
   stripeMinAmount: z.string().default(''),
   stripePublicKey: z.string().default(''),
   googlePayTestEnv: z.string().default(''),
-};
-export const Config = z.object(objectConfig);
+});
 
 export const config = Config.parse(
   Object.freeze({
@@ -33,5 +32,5 @@ export const config = Config.parse(
     stripeMinAmount: STRIPE_MIN_AMOUNT,
     stripePublicKey: STRIPE_PUBLIC_KEY,
     googlePayTestEnv: GOOGLE_PAY_TEST_ENV,
-  } as Record<keyof typeof objectConfig, string | number | boolean | undefined | null>),
+  } as Record<z.infer<keyof typeof Config>, string | number | boolean | undefined | null>),
 );
