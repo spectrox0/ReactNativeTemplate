@@ -12,26 +12,26 @@ import {
 import {z} from 'zod';
 
 const objectConfig = {
-  apiBaseUrl: z.string(),
-  apiKeyStripe: z.string(),
-  apiKeyFirebase: z.string(),
-  merchantId: z.string(),
-  merchantName: z.string(),
-  stripeMinAmount: z.string(),
-  stripePublicKey: z.string(),
-  googlePayTestEnv: z.string(),
+  apiBaseUrl: z.string().default(''),
+  apiKeyStripe: z.string().default(''),
+  apiKeyFirebase: z.string().default(''),
+  merchantId: z.string().default(''),
+  merchantName: z.string().default(''),
+  stripeMinAmount: z.string().default(''),
+  stripePublicKey: z.string().default(''),
+  googlePayTestEnv: z.string().default(''),
 };
 export const Config = z.object(objectConfig);
 
 export const config = Config.parse(
   Object.freeze({
-    apiBaseUrl: (API_BASE_URL ?? 'http://localhost:4000/api/') as string,
-    apiKeyStripe: (API_KEY_STRIPE ?? '') as string,
-    apiKeyFirebase: (API_KEY_FIREBASE ?? '') as string,
-    merchantId: APP_MERCHANT_ID ?? '',
-    merchantName: APP_MERCHANT_NAME ?? '',
-    stripeMinAmount: STRIPE_MIN_AMOUNT ?? '',
-    stripePublicKey: STRIPE_PUBLIC_KEY ?? '',
-    googlePayTestEnv: GOOGLE_PAY_TEST_ENV ?? '',
-  } as Record<keyof typeof objectConfig, string | number | boolean>),
+    apiBaseUrl: API_BASE_URL,
+    apiKeyStripe: API_KEY_STRIPE,
+    apiKeyFirebase: API_KEY_FIREBASE,
+    merchantId: APP_MERCHANT_ID,
+    merchantName: APP_MERCHANT_NAME,
+    stripeMinAmount: STRIPE_MIN_AMOUNT,
+    stripePublicKey: STRIPE_PUBLIC_KEY,
+    googlePayTestEnv: GOOGLE_PAY_TEST_ENV,
+  } as Record<keyof typeof objectConfig, string | number | boolean | undefined | null>),
 );

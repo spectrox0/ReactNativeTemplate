@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationHeader} from '@organisms/NavigationHeader/NavigationHeader';
-import {SignIn, SignUp} from 'src/screens';
-import {screens} from 'src/utils/screenName';
+import {NavigationHeader} from '@organisms';
+import {SignInScreen, SignUpScreen} from '@screens';
+import {screens} from '@utils/screenName';
 import {NavigationContainer} from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
@@ -12,8 +12,8 @@ export const Navigation: FC = () => {
       <Stack.Navigator
         initialRouteName={screens.signIn}
         screenOptions={{header: NavigationHeader}}>
-        <Stack.Screen name={screens.signIn} component={SignIn} />
-        <Stack.Screen name={screens.signUp} component={SignUp} />
+        <Stack.Screen name={screens.signIn} component={SignInScreen} />
+        <Stack.Screen name={screens.signUp} component={SignUpScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

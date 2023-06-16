@@ -1,3 +1,3 @@
 export {HomeScreen} from './Home';
-export {SignIn} from './SignIn';
-export {SignUp} from './SignUp';
+export {SignInScreen} from './SignIn';
+export {SignUpScreen} from './SignUp';
