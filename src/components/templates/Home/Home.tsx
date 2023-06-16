@@ -1,5 +1,5 @@
-import React, {Text} from '@atoms';
-import {FC} from 'react';
+import {Text} from '@atoms';
+import React, {FC} from 'react';
 import {View} from 'react-native';
 
 export const HomeTemplate: FC = () => {

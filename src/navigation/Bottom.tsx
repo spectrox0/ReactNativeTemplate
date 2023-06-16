@@ -3,7 +3,7 @@ import {NavigationHeader} from '@organisms/NavigationHeader/NavigationHeader';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import React, {FC} from 'react';
-import {HomeScreen} from 'src/screens';
+import {HomeScreen} from '@screens';
 const {Navigator, Screen} = createBottomTabNavigator();
 
 export const BottomNavigation: FC = () => {

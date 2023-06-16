@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {FCC} from 'types/common';
+import {FCC} from 'src/types/common';
 import {Card, Modal as KittenModal} from '@ui-kitten/components';
 interface Props {
   title: string;
