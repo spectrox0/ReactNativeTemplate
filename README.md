@@ -8,6 +8,8 @@ yarn install; npx pod-install
 
 Make apk
 
-## Make bundle
-
+## Make aab
 make bundle
+
+## Reset
+Make reset

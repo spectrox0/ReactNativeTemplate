@@ -9,6 +9,18 @@ import {
   GOOGLE_PAY_TEST_ENV,
   //@ts-ignore
 } from '@env';
+import {z} from 'zod';
+
+export const Config = z.object({
+  apiBaseUrl: z.string(),
+  apiKeyStripe: z.string(),
+  apiKeyFirebase: z.string(),
+  merchantId: z.string(),
+  merchantName: z.string(),
+  stripeMinAmount: z.string(),
+  stripePublicKey: z.string(),
+  googlePayTestEnv: z.string(),
+});
 
 export const config = Object.freeze({
   apiBaseUrl: (API_BASE_URL ?? 'http://localhost:4000/api/') as string,
@@ -19,4 +31,4 @@ export const config = Object.freeze({
   stripeMinAmount: STRIPE_MIN_AMOUNT ?? '',
   stripePublicKey: STRIPE_PUBLIC_KEY ?? '',
   googlePayTestEnv: GOOGLE_PAY_TEST_ENV ?? '',
-} as const);
+});
