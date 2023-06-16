@@ -12,7 +12,9 @@ export const NavigationHeader: FC<
   const insets = useSafeAreaInsets();
   return (
     <View style={{paddingTop: insets.top}}>
-      <Text category="h1">{route.name}</Text>
+      <Text maxFontSizeMultiplier={1} category="h4">
+        {route.name} Screen
+      </Text>
     </View>
   );
 };
