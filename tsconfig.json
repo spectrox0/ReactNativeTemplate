@@ -26,18 +26,18 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "skipLibCheck": false,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@atoms": ["components/atoms"],
-      "@atoms/*": ["components/atoms/*"],
-      "@molecules": ["components/molecules"],
-      "@molecules/*": ["components/molecules/*"],
-      "@organisms": ["components/organisms"],
-      "@organisms/*": ["components/organisms/*"],
-      "@templates": ["components/templates"],
-      "@templates/*": ["components/templates/*"],
-      "@actions/*": ["store/actions/*"],
-      "@actions": ["store/actions"]
+      "@atoms": ["src/components/atoms"],
+      "@atoms/*": ["src/components/atoms/*"],
+      "@molecules": ["src/components/molecules"],
+      "@molecules/*": ["src/components/molecules/*"],
+      "@organisms": ["src/components/organisms"],
+      "@organisms/*": ["src/components/organisms/*"],
+      "@templates": ["src/components/templates"],
+      "@templates/*": ["src/components/templates/*"],
+      "@actions/*": ["src/store/actions/*"],
+      "@actions": ["src/store/actions"]
     }
   }
 }

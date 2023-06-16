@@ -1,5 +1,5 @@
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
-import {config as projectConfig} from 'config/config';
+import {config as projectConfig} from 'src/config/config';
 import {getAuthToken} from './storage';
 
 const AuthHeader = (): string => {

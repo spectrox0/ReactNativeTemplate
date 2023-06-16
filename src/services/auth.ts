@@ -10,7 +10,7 @@ interface SignUpResponse {
 export const signIn = async (
   request: SignUpRequest,
 ): Promise<SignUpResponse> => {
-  return (await client.post<SignUpResponse>('login', request)).data;
+  return (await client().post<SignUpResponse>('login', request)).data;
 };
 
 interface SignInRequest {
@@ -24,5 +24,5 @@ interface SignInResponse {
 export const signUp = async (
   request: SignInRequest,
 ): Promise<SignInResponse> => {
-  return (await client.post<SignInResponse>('register', request)).data;
+  return (await client().post<SignInResponse>('register', request)).data;
 };

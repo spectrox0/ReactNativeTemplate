@@ -1,10 +1,10 @@
-import {CustomThemeProvider} from 'context';
-import {useSplashScreen} from 'hooks/useSlashScreen';
-import {MainLayout} from 'layouts/Main';
-import {Navigation} from 'navigation/Stack';
+import {CustomThemeProvider} from 'src/context';
+// import {useSplashScreen} from 'src/hooks/useSlashScreen';
+import {MainLayout} from 'src/layouts/Main';
+import {Navigation} from 'src/navigation/Stack';
 import React from 'react';
 import {StripeProvider} from '@stripe/stripe-react-native';
-import {config} from 'config/config';
+import {config} from 'src/config/config';
 
 function App(): JSX.Element {
   return (
