@@ -7,16 +7,21 @@ import {StripeProvider} from '@stripe/stripe-react-native';
 import {config} from 'config/config';
 
 function App(): JSX.Element {
-  useSplashScreen();
   return (
     <CustomThemeProvider>
-      <StripeProvider
-        publishableKey={config.stripePublicKey}
-        merchantIdentifier={config.merchantId}>
+      {config.stripePublicKey && config.merchantId ? (
+        <StripeProvider
+          publishableKey={config.stripePublicKey}
+          merchantIdentifier={config.merchantId}>
+          <MainLayout>
+            <Navigation />;
+          </MainLayout>
+        </StripeProvider>
+      ) : (
         <MainLayout>
-          <Navigation />;
+          <Navigation />
         </MainLayout>
-      </StripeProvider>
+      )}
     </CustomThemeProvider>
   );
 }

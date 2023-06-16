@@ -11,7 +11,7 @@ import {
 } from '@env';
 import {z} from 'zod';
 
-export const Config = z.object({
+const objectConfig = {
   apiBaseUrl: z.string(),
   apiKeyStripe: z.string(),
   apiKeyFirebase: z.string(),
@@ -20,15 +20,18 @@ export const Config = z.object({
   stripeMinAmount: z.string(),
   stripePublicKey: z.string(),
   googlePayTestEnv: z.string(),
-});
+};
+export const Config = z.object(objectConfig);
 
-export const config = Object.freeze({
-  apiBaseUrl: (API_BASE_URL ?? 'http://localhost:4000/api/') as string,
-  apiKeyStripe: (API_KEY_STRIPE ?? '') as string,
-  apiKeyFirebase: (API_KEY_FIREBASE ?? '') as string,
-  merchantId: APP_MERCHANT_ID ?? '',
-  merchantName: APP_MERCHANT_NAME ?? '',
-  stripeMinAmount: STRIPE_MIN_AMOUNT ?? '',
-  stripePublicKey: STRIPE_PUBLIC_KEY ?? '',
-  googlePayTestEnv: GOOGLE_PAY_TEST_ENV ?? '',
-});
+export const config = Config.parse(
+  Object.freeze({
+    apiBaseUrl: (API_BASE_URL ?? 'http://localhost:4000/api/') as string,
+    apiKeyStripe: (API_KEY_STRIPE ?? '') as string,
+    apiKeyFirebase: (API_KEY_FIREBASE ?? '') as string,
+    merchantId: APP_MERCHANT_ID ?? '',
+    merchantName: APP_MERCHANT_NAME ?? '',
+    stripeMinAmount: STRIPE_MIN_AMOUNT ?? '',
+    stripePublicKey: STRIPE_PUBLIC_KEY ?? '',
+    googlePayTestEnv: GOOGLE_PAY_TEST_ENV ?? '',
+  } as Record<keyof typeof objectConfig, string | number | boolean>),
+);
