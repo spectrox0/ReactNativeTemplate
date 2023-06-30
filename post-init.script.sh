@@ -10,7 +10,9 @@ yarn install
 echo "\nInitializing husky hooks\n"
 npx husky set .husky/pre-commit "npm run test && npm run lint"
 
-echo "\n Install pods \n"
-cd ios && pod install && cd ..
+if [[ $OSTYPE == 'darwin'* ]]; then
+  echo "\n Install pods \n"
+  cd ios && pod install && cd ..
+fi
 
 touch .env
