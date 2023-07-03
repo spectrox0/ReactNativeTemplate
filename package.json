@@ -1,0 +1,8 @@
+{
+  "name": "react-native-new-template",
+  "version": "0.0.5",
+  "description": "React Native Template",
+  "repository": "git@bitbucket.org:towerhousestudio/react-native-template-acdc.git",
+  "author": "Tower House Studio   <diego@towershousestudio.com>",
+  "license": "MIT"
+}
